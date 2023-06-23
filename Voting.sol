@@ -28,6 +28,18 @@ contract Ballot{
     //'memory' won't store any info on the blockchain
     //the argument will be used only for the constructor call
     constructor (bytes32[] memory proposalNames){
+        /* e.g.
+        ["test1","test2","test3"]
+         ["0x6d255fc3390ee6b41191da315958b7d6a1e5b17904cc7683558f98acc57977b4","0x4da432f1ecd4c0ac028ebde3a3f78510a21d54087b161590a63080d33b702b8d","0x204558076efb2042ebc9b034aab36d85d672d8ac1fa809288da5b453a4714aae"]
+
+    taken from
+    import Web3 from "web3";
+
+    console.log([Web3.utils.sha3("test1"),Web3.utils.sha3("test2"),Web3.utils.sha3("test3")]);
+
+        */
+
+
         chairperson = msg.sender; // The one that initializes the contract
         voters[chairperson].weight = 1; //Select the voter with the address of the chairperson
 
@@ -60,7 +72,7 @@ contract Ballot{
         require(sender.weight != 0, "No voting right.");
         require(!sender.voted, "You have already voted.");
 
-        require( voteFor != msg.sender ,"You can delegate yourself.");
+        require( voteFor != msg.sender ,"You can't delegate yourself.");
 
         while ( voters[voteFor].delegate != address(0) ){
 
