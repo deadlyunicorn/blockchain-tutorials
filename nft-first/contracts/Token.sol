@@ -80,3 +80,5 @@ contract MyToken is ERC20, AccessControl{
 
 //in case we have upgradeability in mind
 //please refer to https://docs.openzeppelin.com/contracts/4.x/upgradeable
+//https://docs.openzeppelin.com/upgrades-plugins/1.x/
+//https://forum.openzeppelin.com/t/openzeppelin-upgrades-step-by-step-tutorial-for-truffle/3579
