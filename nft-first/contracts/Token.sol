@@ -6,9 +6,19 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract ModifiedAccessContol is AccessControl{
-    function revokeRole(bytes32,address) public 
-        pure override{
-        revert ("ModifiedAccessControl: cannot revoke role");
+    function revokeRole(bytes32 role,address account) public 
+        override{
+            
+            // revert ("ModifiedAccessControl: cannot revoke role");
+            require(
+                role != DEFAULT_ADMIN_ROLE,
+                "ModifiedAccessContol: cannot revoke default admin role"
+            );
+            //If the above doesn't fail then:
+
+            super.revokeRole(role,account);
+            //do what the default revoke role would do
+    
     }
 }
 
