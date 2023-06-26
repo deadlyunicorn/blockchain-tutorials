@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
+contract ModifiedAccessContol is AccessControl{
+    function revokeRole(bytes32,address) public 
+        pure override{
+        revert ("ModifiedAccessControl: cannot revoke role");
+    }
+}
+
 contract MyToken is ERC20, AccessControl{
 
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE"); //custom roles
