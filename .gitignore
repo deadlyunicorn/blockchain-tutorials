@@ -1,0 +1,15 @@
+nft-first/node_modules/
+blockchain-app/.eslintrc.json
+blockchain-app/.gitignore
+blockchain-app/next.config.js
+blockchain-app/package-lock.json
+blockchain-app/package.json
+blockchain-app/postcss.config.js
+blockchain-app/README.md
+blockchain-app/tailwind.config.js
+blockchain-app/tsconfig.json
+blockchain-app/app/bsc_provider.ts
+blockchain-app/public/next.svg
+blockchain-app/public/vercel.svg
+nft-first/package.json
+nft-first/package-lock.json
