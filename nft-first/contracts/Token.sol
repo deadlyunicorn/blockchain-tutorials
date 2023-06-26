@@ -22,6 +22,31 @@ contract ModifiedAccessContol is AccessControl{
     }
 }
 
+contract ERC20WithSafeTransfer is ERC20{
+    
+    //Provided hook, that help us code more efficiently
+    function _beforeTokenTransfer(address from, address to, uint256 amount)
+        
+        ///whenever overriding hooks we need to use virtual
+        
+        internal virtual override{
+            
+            //always use super here!
+            super._beforeTokenTransfer(from,to,amount);
+
+            require(_validRecipient(to),"ERC20WithSafeTransfer: Invalid recipient");
+        }
+    //Hooks are simply functions that are called before or after some action takes place.
+    
+    function _validRecipient(address to)
+        private view returns (bool){
+            return to != address(0);
+        }
+
+    constructor() ERC20("MyToken","MTK") {}
+    
+}
+
 contract MyToken is ERC20, AccessControl{
 
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE"); //custom roles
