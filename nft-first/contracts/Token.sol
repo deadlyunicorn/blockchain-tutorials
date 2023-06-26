@@ -76,3 +76,7 @@ contract MyToken is ERC20, AccessControl{
 }
 
 //source https://docs.openzeppelin.com/contracts/4.x/access-control
+
+
+//in case we have upgradeability in mind
+//please refer to https://docs.openzeppelin.com/contracts/4.x/upgradeable
